@@ -33,6 +33,15 @@ namespace API
             services.AddDbContext<DataContext>(x =>
             x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //Adding Cors to accept http request 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsApi",
+                    builder => builder.WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -53,6 +62,9 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            //cors
+            app.UseCors("CorsApi");
 
             app.UseAuthorization();
 
