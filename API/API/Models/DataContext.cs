@@ -8,5 +8,7 @@ namespace API.Models
 
         //modles names paresent in after migration batabase and table will going to create
         public DbSet<Values> Values { get; set;  }
+
+        public DbSet<User> Users { get; set; }
     }
 }
