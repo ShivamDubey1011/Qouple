@@ -1,3 +1,4 @@
+using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,8 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            ///added refrence for interface 
+            services.AddScoped<IAuthRepository, AuthRepository>();
             ///here we added Context file through which our database will create and 
             ///we perform all api request to database to get data and send data
             services.AddDbContext<DataContext>(x =>
