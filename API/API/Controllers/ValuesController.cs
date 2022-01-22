@@ -1,4 +1,5 @@
 ﻿using API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
  */
 namespace API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
@@ -26,6 +28,7 @@ namespace API.Controllers
             _dataContext = dataContext;
         }
         // GET: api/<ValuesController>
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<Values>> Get()
         {
